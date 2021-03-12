@@ -16,20 +16,24 @@ class Division {
         self.code = code
     }
     
-    func randomForename() -> String {
-        
-        let forenames = ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles", "Christopher", "Daniel", "Matthew", "Anthony", "Donald", ]
-        
-        return forenames.randomElement()!
+    func getAbsence(for date: Date) -> Absence? {
+        return absences.first{
+            let comparison = Calendar.current.compare($0.dateTakenOn, to: date, toGranularity: .day)
+            return comparison == .orderedSame
+        }
     }
     
-    func randomSurname() -> String {
-        
-        let surnames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzales", "Wilson", "Anderson"]
-        
-        return surnames.randomElement()!
+    func createAbsenceOrGetExistingAbsenceIfAvailable(for date: Date) -> Absence {
+        if getAbsence(for: date) != nil {
+            return getAbsence(for: date)!
+        }
+        else{
+            let absence = Absence(date: date, students: students)
+            absences.append(absence)
+            
+            return absence
+        }
     }
-    
     
     #if DEBUG
 

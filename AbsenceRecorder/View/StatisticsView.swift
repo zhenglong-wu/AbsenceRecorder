@@ -13,7 +13,7 @@ struct StatisticsView: View {
     
     var body: some View {
         
-        Text("\(state.divisions.count)")
+        Text("\(state.divisions[0].code)")
     }
 }
 

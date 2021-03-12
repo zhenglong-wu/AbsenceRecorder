@@ -19,18 +19,11 @@ class Student {
         
     }
     
-    func randomForename() -> String {
-        
-        let forenames = ["James", "John", "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles", "Christopher", "Daniel", "Matthew", "Anthony", "Donald", ]
-        
-        return forenames.randomElement()!
-    }
+    #if DEBUG
     
-    func randomSuranme() -> String {
-        
-        let surnames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzales", "Wilson", "Anderson"]
-        
-        return surnames.randomElement()!
-    }
+    static let example = Student(forename: "Roberto", surname: "Baggio", birthday: Date())
+    static let examples = [example]
+    
+    #endif
   
 }

@@ -23,6 +23,7 @@ struct DivisionsView: View {
                 }
         
             }
+            .onAppear(perform: { state.saveToFile() })
             .navigationTitle(currentDate.getShortDate())
             .toolbar {
                 
